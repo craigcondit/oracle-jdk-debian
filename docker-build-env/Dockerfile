@@ -2,13 +2,16 @@ FROM debian:jessie
 MAINTAINER ccondit@randomcoder.org
 
 ENV \
-	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u72-b15/jdk-8u72-linux-x64.tar.gz \
-	PKG_NAME=jdk-8u72-linux-x64.tar.gz \
-	DIR_NAME=jdk1.8.0_72
+	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-linux-x64.tar.gz \
+	PKG_NAME=jdk-8u74-linux-x64.tar.gz \
+	DIR_NAME=jdk1.8.0_74
 
 RUN \
 	echo "deb http://ftp.us.debian.org/debian jessie main non-free contrib" > /etc/apt/sources.list && \
+	echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
+	echo "deb http://ftp.us.debian.org/debian/ jessie-updates main non-free contrib" >> /etc/apt.sources.list && \
 	apt-get update && \
+	apt-get -y dist-upgrade && \
 	apt-get -y install wget java-package libgl1-mesa-glx libgtk2.0-0 libxslt1.1 libxtst6 libxxf86vm1 && \
 	rm -rf /var/cache/apt && \
 	mkdir -p /download /packages && \
