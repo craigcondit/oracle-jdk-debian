@@ -2,9 +2,9 @@ FROM debian:jessie
 MAINTAINER ccondit@randomcoder.org
 
 ENV \
-	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz \
-	PKG_NAME=jdk-8u92-linux-x64.tar.gz \
-	DIR_NAME=jdk1.8.0_92
+	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz \
+	PKG_NAME=jdk-8u102-linux-x64.tar.gz \
+	DIR_NAME=jdk1.8.0_102
 
 RUN \
 	echo "deb http://ftp.us.debian.org/debian jessie main non-free contrib" > /etc/apt/sources.list && \
