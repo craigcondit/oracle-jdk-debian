@@ -1,11 +1,6 @@
 FROM debian:jessie
 MAINTAINER ccondit@randomcoder.org
 
-ENV \
-	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz \
-	PKG_NAME=jdk-8u112-linux-x64.tar.gz \
-	DIR_NAME=jdk1.8.0_112
-
 RUN \
 	echo "deb http://ftp.us.debian.org/debian jessie main non-free contrib" > /etc/apt/sources.list && \
 	echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
@@ -14,7 +9,14 @@ RUN \
 	apt-get -y dist-upgrade && \
 	apt-get -y install wget java-package libgl1-mesa-glx libgtk2.0-0 libxslt1.1 libxtst6 libxxf86vm1 && \
 	rm -rf /var/cache/apt && \
-	mkdir -p /download /packages && \
+	mkdir -p /download /packages
+
+ENV \
+	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz \
+	PKG_NAME=jdk-8u121-linux-x64.tar.gz \
+	DIR_NAME=jdk1.8.0_121
+
+RUN \
 	cd /download && \
 	wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "${DOWNLOAD_URL}" && \
 	wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip && \
