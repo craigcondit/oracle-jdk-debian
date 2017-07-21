@@ -1,10 +1,10 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER ccondit@randomcoder.org
 
 RUN \
-	echo "deb http://ftp.us.debian.org/debian jessie main non-free contrib" > /etc/apt/sources.list && \
-	echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
-	echo "deb http://ftp.us.debian.org/debian/ jessie-updates main non-free contrib" >> /etc/apt.sources.list && \
+	echo "deb http://ftp.us.debian.org/debian stretch main non-free contrib" > /etc/apt/sources.list && \
+	echo "deb http://security.debian.org/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
+	echo "deb http://ftp.us.debian.org/debian/ stretch-updates main non-free contrib" >> /etc/apt.sources.list && \
 	apt-get update && \
 	apt-get -y dist-upgrade && \
 	apt-get -y install wget java-package libgl1-mesa-glx libgtk2.0-0 libxslt1.1 libxtst6 libxxf86vm1 && \
@@ -12,9 +12,9 @@ RUN \
 	mkdir -p /download /packages
 
 ENV \
-	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz \
-	PKG_NAME=jdk-8u121-linux-x64.tar.gz \
-	DIR_NAME=jdk1.8.0_121
+	DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz \
+	PKG_NAME=jdk-8u141-linux-x64.tar.gz \
+	DIR_NAME=jdk1.8.0_141
 
 RUN \
 	cd /download && \
